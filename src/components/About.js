@@ -1,10 +1,10 @@
 import { Container, Typography, Grid, Box } from "@mui/material";
-import React from "react";
 import photo from "../images/photo.jpg";
 
-const About = () => {
+const About = ({ aboutRef }) => {
   return (
     <Box
+      ref={aboutRef}
       sx={{
         marginTop: "5rem",
       }}
@@ -17,7 +17,15 @@ const About = () => {
             alignItems: "center",
           }}
         >
-          <Grid xs={6} item>
+          <Grid
+            xs={6}
+            item
+            container
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <img src={photo} width="300px" alt="it is me drinking coffee" />
           </Grid>
           <Grid item xs={6}>

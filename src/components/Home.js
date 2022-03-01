@@ -1,15 +1,16 @@
-import {
-  Container,
-  CssBaseline,
-  IconButton,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Container, IconButton, Typography, Box } from "@mui/material";
 import Typical from "react-typical";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import BG from "../images/BG1.jpg";
+//import { useRef } from "react";
 
-const Home = () => {
+const Home = ({ aboutRef }) => {
+  //const about = useRef();
+  //   const buttonClick = () => {
+  //     console.log("test");
+  //     about.scrollIntoView({ behavior: "smooth" });
+  //   };
+
   return (
     <Box
       style={{
@@ -54,6 +55,9 @@ const Home = () => {
         </Typography>
 
         <IconButton
+          onClick={() =>
+            aboutRef.current.scrollIntoView({ behavior: "smooth" })
+          }
           align="center"
           sx={{
             backgroundColor: "grey",
