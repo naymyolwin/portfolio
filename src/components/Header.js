@@ -12,6 +12,7 @@ const Header = () => {
     <AppBar
       sx={{
         backgroundColor: "#02373A",
+        height: "64px",
       }}
     >
       <Container

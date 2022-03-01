@@ -5,12 +5,6 @@ import BG from "../images/BG1.jpg";
 //import { useRef } from "react";
 
 const Home = ({ aboutRef }) => {
-  //const about = useRef();
-  //   const buttonClick = () => {
-  //     console.log("test");
-  //     about.scrollIntoView({ behavior: "smooth" });
-  //   };
-
   return (
     <Box
       style={{
@@ -19,6 +13,7 @@ const Home = ({ aboutRef }) => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundImage: `url(${BG})`,
+        position: "relative",
       }}
     >
       <Container
@@ -56,7 +51,9 @@ const Home = ({ aboutRef }) => {
 
         <IconButton
           onClick={() =>
-            aboutRef.current.scrollIntoView({ behavior: "smooth" })
+            aboutRef.current.scrollIntoView({
+              behavior: "smooth",
+            })
           }
           align="center"
           sx={{
@@ -78,6 +75,16 @@ const Home = ({ aboutRef }) => {
           />
         </IconButton>
       </Container>
+      <Box
+        ref={aboutRef}
+        sx={{
+          marginTop: "5rem",
+          backgroundColor: "red",
+          height: "1px",
+          position: "absolute",
+          bottom: "64px",
+        }}
+      ></Box>
     </Box>
   );
 };
