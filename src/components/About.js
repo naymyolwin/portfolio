@@ -1,9 +1,20 @@
 import { Container, Typography, Grid, Box } from "@mui/material";
 import photo from "../images/photo.jpg";
 
-const About = () => {
+const About = ({ aboutRef }) => {
   return (
-    <Box>
+    <Box
+      sx={{
+        position: "relative",
+      }}
+    >
+      <Box
+        ref={aboutRef}
+        sx={{
+          position: "absolute",
+          top: "-4rem",
+        }}
+      ></Box>
       <Box
         sx={{
           height: "5rem",

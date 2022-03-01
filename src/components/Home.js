@@ -4,9 +4,10 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import BG from "../images/BG1.jpg";
 //import { useRef } from "react";
 
-const Home = ({ aboutRef }) => {
+const Home = ({ homeRef, aboutRef }) => {
   return (
     <Box
+      ref={homeRef}
       style={{
         height: "100vh",
         backgroundPosition: "center",
@@ -75,16 +76,6 @@ const Home = ({ aboutRef }) => {
           />
         </IconButton>
       </Container>
-      <Box
-        ref={aboutRef}
-        sx={{
-          marginTop: "5rem",
-          backgroundColor: "red",
-          height: "1px",
-          position: "absolute",
-          bottom: "64px",
-        }}
-      ></Box>
     </Box>
   );
 };

@@ -14,68 +14,81 @@ const skills = [
   { type: "Firebase", level: 50 },
 ];
 
-const Skills = () => {
+const Skills = ({ skillsRef }) => {
   return (
     <Box
       sx={{
-        marginTop: "5rem",
+        position: "relative",
       }}
     >
-      <Container>
-        <Typography variant="h3" textAlign="center">
-          SKILLS
-        </Typography>
-        <ul
-          style={{
-            margin: "0 0 30px 0",
-            padding: 0,
-            width: "calc(100% - 50px)",
-          }}
-        >
-          {skills.map((skill, index) => (
-            <li
-              key={skill.type}
-              style={{
-                display: "block",
-                position: "relative",
-                backgrounColor: "#888",
-                color: "#fff",
-                margin: "10px 0",
-
-                width: `${skill.level}%`,
-                backgroundColor: `hsl(${200}, ${200}%, ${
-                  100 / (index + 3.5)
-                }%)`,
-              }}
-            >
-              <p
+      <Box
+        ref={skillsRef}
+        sx={{
+          position: "absolute",
+          top: "-6rem",
+        }}
+      ></Box>
+      <Box
+        sx={{
+          marginTop: "5rem",
+        }}
+      >
+        <Container>
+          <Typography variant="h3" textAlign="center">
+            SKILLS
+          </Typography>
+          <ul
+            style={{
+              margin: "0 0 30px 0",
+              padding: 0,
+              width: "calc(100% - 50px)",
+            }}
+          >
+            {skills.map((skill, index) => (
+              <li
+                key={skill.type}
                 style={{
-                  padding: "10px",
-                  margin: 0,
-                  fontWeight: "bold",
+                  display: "block",
+                  position: "relative",
+                  backgrounColor: "#888",
+                  color: "#fff",
+                  margin: "10px 0",
+
+                  width: `${skill.level}%`,
+                  backgroundColor: `hsl(${200}, ${200}%, ${
+                    100 / (index + 3.5)
+                  }%)`,
                 }}
               >
-                {skill.type}
-                <span
+                <p
                   style={{
-                    position: "absolute",
-                    right: "10px",
-                    display: "inline-block",
-                    width: "30px",
-                    top: "11px",
-                    textAlign: "right",
-                    fontAeight: "normal",
-                    color: "#fff",
-                    fontSize: "11px",
+                    padding: "10px",
+                    margin: 0,
+                    fontWeight: "bold",
                   }}
                 >
-                  {skill.level}
-                </span>
-              </p>
-            </li>
-          ))}
-        </ul>
-      </Container>
+                  {skill.type}
+                  <span
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      display: "inline-block",
+                      width: "30px",
+                      top: "11px",
+                      textAlign: "right",
+                      fontAeight: "normal",
+                      color: "#fff",
+                      fontSize: "11px",
+                    }}
+                  >
+                    {skill.level}
+                  </span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Box>
     </Box>
   );
 };

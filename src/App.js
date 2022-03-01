@@ -8,15 +8,26 @@ import Home from "./components/Home";
 import { useRef } from "react";
 
 function App() {
+  const homeRef = useRef();
   const aboutRef = useRef();
+  const skillsRef = useRef();
+  const projectsRef = useRef();
+  const contactRef = useRef();
+
   return (
     <div>
-      <Header />
-      <Home aboutRef={aboutRef} />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <Header
+        homeRef={homeRef}
+        aboutRef={aboutRef}
+        skillsRef={skillsRef}
+        projectsRef={projectsRef}
+        contactRef={contactRef}
+      />
+      <Home homeRef={homeRef} aboutRef={aboutRef} />
+      <About aboutRef={aboutRef} />
+      <Skills skillsRef={skillsRef} />
+      <Projects projectsRef={projectsRef} />
+      <Contact contactRef={contactRef} />
       <Footer />
     </div>
   );
