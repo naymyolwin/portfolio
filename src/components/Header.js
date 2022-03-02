@@ -1,9 +1,20 @@
-import { AppBar, Button, Container, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Container,
+  Toolbar,
+  Typography,
+  Menu,
+  IconButton,
+  MenuItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 
 const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
   const menus = ["home", "about", "skills", "projects", "contact"];
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const menuClick = (menu) => {
     menu === "about" &&
@@ -26,7 +37,19 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
       contactRef.current.scrollIntoView({
         behavior: "smooth",
       });
+    console.log(menu);
   };
+
+  const handleOpenNavMenu = (event) => {
+    console.log("open");
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    console.log("close");
+    setAnchorElNav(null);
+  };
+
   return (
     <AppBar
       sx={{
@@ -37,15 +60,53 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
       <Container
         sx={{
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
         }}
       >
         <Toolbar>
-          <Typography sx={{ position: "fixed", left: "100px" }}>
-            LOGO
-          </Typography>
-          <Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="list of menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {menus.map((menu) => (
+                <MenuItem
+                  key={menu}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    menuClick(menu);
+                  }}
+                >
+                  <Typography textAlign="center">{menu}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {menus.map((menu) => (
               <Button
                 key={menu}
