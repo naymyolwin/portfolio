@@ -10,13 +10,14 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
   const menus = ["home", "about", "skills", "projects", "contact"];
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [menu, setMenu] = useState("");
 
-  const menuClick = (menu) => {
+  useEffect(() => {
     menu === "about" &&
       aboutRef.current.scrollIntoView({
         behavior: "smooth",
@@ -37,17 +38,15 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
       contactRef.current.scrollIntoView({
         behavior: "smooth",
       });
-    console.log(menu);
-  };
+  }, [menu, homeRef, aboutRef, skillsRef, projectsRef, contactRef]);
 
   const handleOpenNavMenu = (event) => {
-    console.log("open");
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    console.log("close");
+  const handleCloseNavMenu = (menu) => {
     setAnchorElNav(null);
+    setMenu(menu);
   };
 
   return (
@@ -57,14 +56,15 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
         height: "64px",
       }}
     >
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Toolbar>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+      <Container>
+        <Toolbar sx={{ position: "relative", width: "100%" }}>
+          <Box
+            sx={{
+              display: { xs: "flex", md: "none" },
+              position: "absolute",
+              right: "3rem",
+            }}
+          >
             <IconButton
               size="large"
               aria-label="list of menu"
@@ -90,27 +90,28 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: "flex", md: "none" },
               }}
             >
               {menus.map((menu) => (
-                <MenuItem
-                  key={menu}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    menuClick(menu);
-                  }}
-                >
-                  <Typography textAlign="center">{menu}</Typography>
+                <MenuItem key={menu} onClick={() => handleCloseNavMenu(menu)}>
+                  <Typography>{menu}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
             {menus.map((menu) => (
               <Button
                 key={menu}
-                onClick={() => menuClick(menu)}
+                onClick={() => setMenu(menu)}
                 sx={{
                   color: "whitesmoke",
                 }}
