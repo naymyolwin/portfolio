@@ -1,7 +1,6 @@
 import {
   AppBar,
   Button,
-  Container,
   Toolbar,
   Typography,
   Menu,
@@ -56,72 +55,69 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
         height: "64px",
       }}
     >
-      <Container>
-        <Toolbar sx={{ position: "relative", width: "100%" }}>
-          <Box
-            sx={{
-              display: { xs: "flex", md: "none" },
-              position: "absolute",
-              right: "3rem",
-            }}
+      <Toolbar>
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            position: "absolute",
+            right: "3rem",
+          }}
+        >
+          <IconButton
+            size="large"
+            aria-label="list of menu"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="inherit"
           >
-            <IconButton
-              size="large"
-              aria-label="list of menu"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "flex", md: "none" },
-              }}
-            >
-              {menus.map((menu) => (
-                <MenuItem key={menu} onClick={() => handleCloseNavMenu(menu)}>
-                  <Typography>{menu}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              justifyContent: "center",
-              width: "100%",
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
             }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            // sx={{
+            //   display: { xs: "flex", md: "none" },
+            // }}
           >
             {menus.map((menu) => (
-              <Button
-                key={menu}
-                onClick={() => setMenu(menu)}
-                sx={{
-                  color: "whitesmoke",
-                }}
-              >
-                {menu}
-              </Button>
+              <MenuItem key={menu} onClick={() => handleCloseNavMenu(menu)}>
+                <Typography>{menu}</Typography>
+              </MenuItem>
             ))}
-          </Box>
-        </Toolbar>
-      </Container>
+          </Menu>
+        </Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          {menus.map((menu) => (
+            <Button
+              key={menu}
+              onClick={() => setMenu(menu)}
+              sx={{
+                color: "whitesmoke",
+              }}
+            >
+              {menu}
+            </Button>
+          ))}
+        </Box>
+      </Toolbar>
     </AppBar>
   );
 };

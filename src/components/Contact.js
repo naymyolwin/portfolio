@@ -37,7 +37,7 @@ const Contact = ({ contactRef }) => {
             id="outlined-required"
             label="Name"
             sx={{
-              margin: "1rem",
+              margin: "1rem 0",
             }}
           />
           <TextField
@@ -46,7 +46,7 @@ const Contact = ({ contactRef }) => {
             id="outlined-required"
             label="Email"
             sx={{
-              margin: "1rem",
+              margin: "1rem 0",
             }}
           />
           <TextField
@@ -56,13 +56,12 @@ const Contact = ({ contactRef }) => {
             label="Message"
             multiline
             sx={{
-              margin: "1rem",
+              margin: "1rem 0",
             }}
           />
           <Container
             sx={{
               width: "100%",
-
               alignItems: "center",
               justifyContent: "center",
             }}
