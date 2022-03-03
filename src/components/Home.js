@@ -27,7 +27,6 @@ const Home = ({ homeRef, aboutRef }) => {
         }}
       >
         <Typography
-          variant="h3"
           align="center"
           sx={{
             width: "100%",
@@ -36,6 +35,7 @@ const Home = ({ homeRef, aboutRef }) => {
             left: "50%",
             marginLeft: "-50%",
             color: "whitesmoke",
+            fontSize: { xs: "2rem", md: "3rem" },
           }}
         >
           <Typical

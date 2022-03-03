@@ -27,6 +27,7 @@ const About = ({ aboutRef }) => {
             spacing={1}
             sx={{
               alignItems: "center",
+              flexDirection: { xs: "column", md: "row" },
             }}
           >
             <Grid
@@ -41,14 +42,20 @@ const About = ({ aboutRef }) => {
               <img src={photo} width="300px" alt="it is me drinking coffee" />
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="h2">
+              <Typography sx={{ fontSize: { xs: "2rem", md: "3rem" } }}>
                 Hi, I’m Nay. Nice to meet you.
               </Typography>
-              <Typography variant="=p">
+              <Typography
+                variant="h6"
+                sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}
+              >
                 I like to code things from scratch, and enjoy bringing ideas to
                 life in the browser.
               </Typography>
-              <Typography>
+              <Typography
+                variant="h6"
+                sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}
+              >
                 And I do this magic from a sunny island in the south of Thailand
                 with a cup of coffee.
               </Typography>
