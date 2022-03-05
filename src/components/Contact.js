@@ -5,10 +5,12 @@ import {
   TextField,
   Typography,
   CircularProgress,
+  Snackbar,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import sendBtn from "../images/send.svg";
+import axios from "axios";
 
 const Contact = ({ contactRef }) => {
   const [name, setName] = useState("");
@@ -17,6 +19,11 @@ const Contact = ({ contactRef }) => {
   const [open, setOpen] = useState(false);
   const [emailHelper, setEmailHelper] = useState("");
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    backgroundColor: "",
+  });
 
   const buttonContent = (
     <React.Fragment>
@@ -45,41 +52,34 @@ const Contact = ({ contactRef }) => {
   };
 
   const onConfirm = () => {
-    setLoading(true);
-
-    // axios
-    //   .get(
-    //     "https://us-central1-arc-development-5e093.cloudfunctions.net/sendMail",
-    //     {
-    //       params: {
-    //         name: name,
-    //         email: email,
-    //         phone: phone,
-    //         message: message,
-    //       },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     setLoading(false);
-    //     setOpen(false);
-    //     setName("");
-    //     setEmail("");
-    //     setMessage("");
-    //     setPhone("");
-    //     setAlert({
-    //       open: true,
-    //       message: "message sent successfully",
-    //       backgroundColor: "#4BB543",
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //     setAlert({
-    //       open: true,
-    //       message: "something went worng, please try again",
-    //       backgroundColor: "#FF3232",
-    //     });
-    //   });
+    axios
+      .post("http://localhost:5000/send/email", {
+        params: {
+          name: name,
+          email: email,
+          message: message,
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+        setOpen(false);
+        setName("");
+        setEmail("");
+        setMessage("");
+        setAlert({
+          open: true,
+          message: "message sent successfully",
+          backgroundColor: "#4BB543",
+        });
+      })
+      .catch((err) => {
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: "something went worng, please try again",
+          backgroundColor: "#FF3232",
+        });
+      });
   };
 
   return (
@@ -168,6 +168,11 @@ const Contact = ({ contactRef }) => {
               }}
               variant="contained"
               onClick={() => setOpen(true)}
+              disabled={
+                name.length === 0 ||
+                message.length === 0 ||
+                emailHelper.length !== 0
+              }
             >
               {buttonContent}
             </Button>
@@ -277,6 +282,11 @@ const Contact = ({ contactRef }) => {
                 }}
                 variant="contained"
                 onClick={onConfirm}
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  emailHelper.length !== 0
+                }
               >
                 {loading ? <CircularProgress size={30} /> : buttonContent}
               </Button>
@@ -284,6 +294,18 @@ const Contact = ({ contactRef }) => {
           </Container>
         </Box>
       </Modal>
+      <Snackbar
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{
+          style: {
+            backgroundColor: alert.backgroundColor,
+          },
+        }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={3000}
+      />
     </Box>
   );
 };
