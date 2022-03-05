@@ -45,17 +45,11 @@ const About = ({ aboutRef }) => {
               <Typography sx={{ fontSize: { xs: "2rem", md: "3rem" } }}>
                 Hi, I’m Nay. Nice to meet you.
               </Typography>
-              <Typography
-                variant="h6"
-                sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}
-              >
+              <Typography sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}>
                 I like to code things from scratch, and enjoy bringing ideas to
                 life in the browser.
               </Typography>
-              <Typography
-                variant="h6"
-                sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}
-              >
+              <Typography sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}>
                 And I do this magic from a sunny island in the south of Thailand
                 with a cup of coffee.
               </Typography>

@@ -2,7 +2,6 @@ import { Container, IconButton, Typography, Box } from "@mui/material";
 import Typical from "react-typical";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import BG from "../images/BG1.jpg";
-//import { useRef } from "react";
 
 const Home = ({ homeRef, aboutRef }) => {
   return (
@@ -27,6 +26,7 @@ const Home = ({ homeRef, aboutRef }) => {
         }}
       >
         <Typography
+          variant="h3"
           align="center"
           sx={{
             width: "100%",

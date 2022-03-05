@@ -45,46 +45,53 @@ const Skills = ({ skillsRef }) => {
             }}
           >
             {skills.map((skill, index) => (
-              <li
+              <Box
                 key={skill.type}
-                style={{
-                  display: "block",
-                  position: "relative",
-                  backgrounColor: "#888",
-                  color: "#fff",
-                  margin: "10px 0",
-
-                  width: `${skill.level}%`,
-                  backgroundColor: `hsl(${200}, ${200}%, ${
-                    100 / (index + 3.5)
-                  }%)`,
+                sx={{
+                  backgroundColor: "#eee",
+                  margin: "0 2rem",
                 }}
               >
-                <p
+                <li
                   style={{
-                    padding: "10px",
-                    margin: 0,
-                    fontWeight: "bold",
+                    display: "block",
+                    position: "relative",
+                    backgrounColor: "#888",
+                    color: "#fff",
+                    margin: "10px 0",
+
+                    width: `${skill.level}%`,
+                    backgroundColor: `hsl(${200}, ${200}%, ${
+                      100 / (index + 3.5)
+                    }%)`,
                   }}
                 >
-                  {skill.type}
-                  <span
+                  <p
                     style={{
-                      position: "absolute",
-                      right: "10px",
-                      display: "inline-block",
-                      width: "30px",
-                      top: "11px",
-                      textAlign: "right",
-                      fontAeight: "normal",
-                      color: "#fff",
-                      fontSize: "11px",
+                      padding: "10px",
+                      margin: 0,
+                      fontWeight: "bold",
                     }}
                   >
-                    {skill.level}
-                  </span>
-                </p>
-              </li>
+                    {skill.type}
+                    <span
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        display: "inline-block",
+                        width: "30px",
+                        top: "11px",
+                        textAlign: "right",
+                        fontAeight: "normal",
+                        color: "#fff",
+                        fontSize: "11px",
+                      }}
+                    >
+                      {skill.level}
+                    </span>
+                  </p>
+                </li>
+              </Box>
             ))}
           </ul>
         </Container>
