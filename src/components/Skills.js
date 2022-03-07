@@ -1,20 +1,18 @@
 import { Box, Container, Typography } from "@mui/material";
-import React from "react";
-
-const skills = [
-  { type: "HTML", level: 90 },
-  { type: "CSS", level: 70 },
-  { type: "JavaScript", level: 80 },
-  { type: "Material UI", level: 80 },
-  { type: "NextJS", level: 50 },
-  { type: "NodeJS", level: 50 },
-  { type: "ReactJS", level: 74 },
-  { type: "Git", level: 60 },
-  { type: "MongoDB", level: 50 },
-  { type: "Firebase", level: 50 },
-];
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Skills = ({ skillsRef }) => {
+  const [skills, setSkills] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/get/skills")
+      .then((response) => {
+        setSkills(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Box
       sx={{
