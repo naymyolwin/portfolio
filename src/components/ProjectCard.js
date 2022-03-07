@@ -6,32 +6,43 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Link,
   Typography,
 } from "@mui/material";
-import photo from "../images/photo.jpg";
 
-const ProjectCard = () => {
+const ProjectCard = ({
+  title,
+  description,
+  githubLink,
+  liveLink,
+  imageUrl,
+}) => {
   return (
     <Grid item>
       <Card sx={{ maxWidth: 200 }}>
         <CardMedia
           component="img"
           width="200"
-          image={photo}
+          image={imageUrl}
           alt="project image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Project Title
+            {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-            consectetur, adipisci velit...
+            {description}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button>Github</Button>
-          <Button>Live Link</Button>
+          <Link href={githubLink} underline="hover" marginRight={2}>
+            Github
+          </Link>
+          {liveLink && (
+            <Link href={liveLink} underline="hover">
+              Live Link
+            </Link>
+          )}
         </CardActions>
       </Card>
     </Grid>

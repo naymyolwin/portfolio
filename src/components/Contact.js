@@ -53,7 +53,7 @@ const Contact = ({ contactRef }) => {
 
   const onConfirm = () => {
     axios
-      .post("http://localhost:5000/send/email", {
+      .post("https://naymyolwin-portfolio.herokuapp.com/send/email", {
         params: {
           name: name,
           email: email,

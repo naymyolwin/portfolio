@@ -6,7 +6,7 @@ const Skills = ({ skillsRef }) => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/get/skills")
+      .get("https://naymyolwin-portfolio.herokuapp.com/get/skills")
       .then((response) => {
         setSkills(response.data);
       })

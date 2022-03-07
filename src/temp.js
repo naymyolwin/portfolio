@@ -319,8 +319,8 @@ const Contact = (props) => {
             </Grid>
             <Grid item style={{ width: "20em" }}>
               <TextField
-                InputProps={{ disableUnderline: true }}
                 className={classes.message}
+                InputProps={{ disableUnderline: true }}
                 value={message}
                 id="message"
                 onChange={(event) => setMessage(event.target.value)}
@@ -344,6 +344,23 @@ const Contact = (props) => {
               >
                 {buttonContent}
               </Button>
+              <button
+                onClick={() => {
+                  this.setState(
+                    () => {
+                      return {
+                        name: {
+                          firstName: "otherFirstName",
+                          lastName: "otherLastName",
+                        },
+                      };
+                    },
+                    () => {}
+                  );
+                }}
+              >
+                Change Name
+              </button>
             </Grid>
           </Grid>
         </Grid>
@@ -543,3 +560,5 @@ const Contact = (props) => {
 };
 
 export default Contact;
+
+lCa0ouVs8ZWKiCtY;
