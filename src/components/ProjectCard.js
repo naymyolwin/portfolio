@@ -18,10 +18,11 @@ const ProjectCard = ({
 }) => {
   return (
     <Grid item>
-      <Card sx={{ maxWidth: 200 }}>
+      <Card sx={{ maxWidth: 300, height: 400 }}>
         <CardMedia
           component="img"
-          width="200"
+          width="300"
+          height="200"
           image={imageUrl}
           alt="project image"
         />
@@ -29,7 +30,14 @@ const ProjectCard = ({
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            sx={{
+              height: "75px",
+              overflow: "scroll",
+            }}
+            variant="body2"
+            color="text.secondary"
+          >
             {description}
           </Typography>
         </CardContent>

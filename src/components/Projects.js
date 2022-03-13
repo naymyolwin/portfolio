@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import ProjectCard from "./ProjectCard";
-import photo from "../images/photo.jpg";
 import axios from "axios";
 
 // const projects = [
@@ -69,7 +68,7 @@ const Projects = ({ projectsRef }) => {
                 description={project.description}
                 githubLink={project.githubLink}
                 liveLink={project.liveLink}
-                imageUrl={photo}
+                imageUrl={project.imageUrl}
               />
             ))}
           </Grid>
