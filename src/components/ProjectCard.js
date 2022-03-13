@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -35,11 +34,22 @@ const ProjectCard = ({
           </Typography>
         </CardContent>
         <CardActions>
-          <Link href={githubLink} underline="hover" marginRight={2}>
+          <Link
+            href={githubLink}
+            underline="hover"
+            target="_blank"
+            rel="noopener"
+            marginRight={2}
+          >
             Github
           </Link>
           {liveLink && (
-            <Link href={liveLink} underline="hover">
+            <Link
+              href={liveLink}
+              underline="hover"
+              target="_blank"
+              rel="noopener"
+            >
               Live Link
             </Link>
           )}

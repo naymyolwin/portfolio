@@ -1,33 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import ProjectCard from "./ProjectCard";
 import photo from "../images/photo.jpg";
+import axios from "axios";
 
-const projects = [
-  {
-    title: "project title1",
-    description: "project description1",
-    githubLink: "https://github.com/",
-    liveLink: "https://naymyolwin.github.io/portfolio/",
-    imageUrl: "link to image location",
-  },
-  {
-    title: "project title2",
-    description: "project description2",
-    githubLink: "https://github.com/",
-    liveLink: "https://naymyolwin.github.io/portfolio/",
-    imageUrl: "link to image location",
-  },
-  {
-    title: "project title3",
-    description: "project description2",
-    githubLink: "https://github.com/",
-    liveLink: "",
-    imageUrl: "link to image location",
-  },
-];
+// const projects = [
+//   {
+//     title: "project title1",
+//     description: "project description1",
+//     githubLink: "https://github.com/",
+//     liveLink: "https://naymyolwin.github.io/portfolio/",
+//     imageUrl: "link to image location",
+//   },
+//   {
+//     title: "project title2",
+//     description: "project description2",
+//     githubLink: "https://github.com/",
+//     liveLink: "https://naymyolwin.github.io/portfolio/",
+//     imageUrl: "link to image location",
+//   },
+//   {
+//     title: "project title3",
+//     description: "project description2",
+//     githubLink: "https://github.com/",
+//     liveLink: "",
+//     imageUrl: "link to image location",
+//   },
+// ];
 
 const Projects = ({ projectsRef }) => {
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://naymyolwin-portfolio.herokuapp.com/get/projects")
+      .then((response) => {
+        setProjects(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Box
       sx={{
