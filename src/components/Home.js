@@ -39,12 +39,7 @@ const Home = ({ homeRef, aboutRef }) => {
           }}
         >
           <Typical
-            steps={[
-              "My name is Nay Myo Lwin ",
-              1000,
-              "and i'm a web developer ",
-              1000,
-            ]}
+            steps={["Nay Myo Lwin ", 1000, "Full Stack Developer ", 1000]}
             loop={Infinity}
             wrapper="p"
           />
