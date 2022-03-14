@@ -1,7 +1,18 @@
 import { Container, Typography, Grid, Box } from "@mui/material";
-import photo from "../images/photo.jpg";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const About = ({ aboutRef }) => {
+  const [aboutMe, setAboutMe] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://naymyolwin-portfolio.herokuapp.com/get/datas")
+      .then((response) => {
+        setAboutMe(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Box
       sx={{
@@ -39,19 +50,18 @@ const About = ({ aboutRef }) => {
                 alignItems: "center",
               }}
             >
-              <img src={photo} width="300px" alt="it is me drinking coffee" />
+              <img
+                src={aboutMe.length > 0 ? aboutMe[0].image : ""}
+                width="300px"
+                alt="it is me drinking coffee"
+              />
             </Grid>
             <Grid item xs={6}>
               <Typography sx={{ fontSize: { xs: "2rem", md: "3rem" } }}>
-                Hi, I’m Nay. Nice to meet you.
+                {aboutMe.length > 0 && aboutMe[0].greeting}
               </Typography>
               <Typography sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}>
-                I like to code things from scratch, and enjoy bringing ideas to
-                life in the browser.
-              </Typography>
-              <Typography sx={{ fontSize: { xs: "1rem", md: "1.5rem" } }}>
-                And I do this magic from a sunny island in the south of Thailand
-                with a cup of coffee.
+                {aboutMe.length > 0 && aboutMe[0].introduce}
               </Typography>
             </Grid>
           </Grid>
