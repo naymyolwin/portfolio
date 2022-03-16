@@ -87,9 +87,6 @@ const Header = ({ homeRef, aboutRef, skillsRef, projectsRef, contactRef }) => {
             }}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
-            // sx={{
-            //   display: { xs: "flex", md: "none" },
-            // }}
           >
             {menus.map((menu) => (
               <MenuItem key={menu} onClick={() => handleCloseNavMenu(menu)}>

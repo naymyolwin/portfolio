@@ -56,7 +56,7 @@ const Home = ({ homeRef, aboutRef }) => {
             backgroundColor: "grey",
             width: "80px",
             height: "80px",
-            top: "90%",
+            top: "85%",
             left: "50%",
             marginLeft: "-40px",
             alignItems: "center",

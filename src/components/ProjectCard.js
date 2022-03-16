@@ -48,6 +48,7 @@ const ProjectCard = ({
             target="_blank"
             rel="noopener"
             marginRight={2}
+            color="#02373A"
           >
             Github
           </Link>
@@ -57,6 +58,7 @@ const ProjectCard = ({
               underline="hover"
               target="_blank"
               rel="noopener"
+              color="#02373A"
             >
               Live Link
             </Link>

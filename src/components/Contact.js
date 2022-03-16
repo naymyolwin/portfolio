@@ -7,10 +7,28 @@ import {
   CircularProgress,
   Snackbar,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import sendBtn from "../images/send.svg";
 import axios from "axios";
+
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "#02373A",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#02373A",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#02373A",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#02373A",
+    },
+  },
+});
 
 const Contact = ({ contactRef }) => {
   const [name, setName] = useState("");
@@ -111,7 +129,7 @@ const Contact = ({ contactRef }) => {
           >
             Contact
           </Typography>
-          <TextField
+          <CssTextField
             fullWidth
             required
             label="Name"
@@ -122,7 +140,7 @@ const Contact = ({ contactRef }) => {
               margin: "1rem 0",
             }}
           />
-          <TextField
+          <CssTextField
             onChange={onChange}
             value={email}
             fullWidth
@@ -135,7 +153,7 @@ const Contact = ({ contactRef }) => {
               margin: "1rem 0",
             }}
           />
-          <TextField
+          <CssTextField
             value={message}
             id="message"
             onChange={(event) => setMessage(event.target.value)}
@@ -165,6 +183,9 @@ const Contact = ({ contactRef }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: "#02373A",
+                "&:hover": {
+                  backgroundColor: "rgba(2, 55, 58, 0.9 )",
+                },
               }}
               variant="contained"
               onClick={() => setOpen(true)}
@@ -208,7 +229,7 @@ const Contact = ({ contactRef }) => {
             >
               Confirm
             </Typography>
-            <TextField
+            <CssTextField
               fullWidth
               required
               label="Name"
@@ -219,7 +240,7 @@ const Contact = ({ contactRef }) => {
                 margin: "1rem 0",
               }}
             />
-            <TextField
+            <CssTextField
               onChange={onChange}
               value={email}
               fullWidth
@@ -232,7 +253,7 @@ const Contact = ({ contactRef }) => {
                 margin: "1rem 0",
               }}
             />
-            <TextField
+            <CssTextField
               value={message}
               id="message"
               onChange={(event) => setMessage(event.target.value)}
@@ -266,6 +287,9 @@ const Contact = ({ contactRef }) => {
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: "#02373A",
+                  "&:hover": {
+                    borderColor: "rgba(2, 55, 58, 1 )",
+                  },
                 }}
               >
                 Cancel
@@ -279,6 +303,9 @@ const Contact = ({ contactRef }) => {
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: "#02373A",
+                  "&:hover": {
+                    backgroundColor: "rgba(2, 55, 58, 0.9 )",
+                  },
                 }}
                 variant="contained"
                 onClick={onConfirm}
